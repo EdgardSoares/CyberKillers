@@ -19,9 +19,9 @@ public class NPCNavAugmentedM : MonoBehaviour
     {
         _theAgent.SetDestination(_destination.transform.position);
 
-        if(transform.position.z >= 20)
+        if(transform.position.z >= 45)
         {
             GameObject.Destroy(gameObject);
-        }
+        } 
     }
 }
