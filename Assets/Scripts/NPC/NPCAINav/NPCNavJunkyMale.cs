@@ -19,7 +19,7 @@ public class NPCNavJunkyMale : MonoBehaviour
     {
         _theAgent.SetDestination(_destination.transform.position);
 
-        if(transform.position.z <= 50)
+        if(transform.position.z <= -39)
         {
             GameObject.Destroy(gameObject);
         }

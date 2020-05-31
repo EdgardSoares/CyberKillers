@@ -40,6 +40,7 @@ public class Dialog : MonoBehaviour
         if(other.gameObject.name == "player")
         {
             _canvasDialogo.SetActive(false);
+            _display.text = "";
         }
     }
 
