@@ -59,7 +59,7 @@ public class NPCApprouch : MonoBehaviour
         if(col.gameObject.name == "player")
         {
             _isRange = true;
-            _dialogoCanvas.SetActive(true);
+  
         }
     }
 
@@ -97,10 +97,6 @@ public class NPCApprouch : MonoBehaviour
 
             }
 
-        
-            
-            
-        
        
     }*/
 
