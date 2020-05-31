@@ -28,6 +28,7 @@ public class NPCApprouch : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("player").GetComponent<ThirdPersonCharacter>();
+        
       
     }
 
@@ -38,9 +39,9 @@ public class NPCApprouch : MonoBehaviour
         {
             if (Input.GetKey(_interectionKey))
             {
-                Debug.Log("FALA BROTHER!!!");
+                _interecAction.Invoke();
                 // Start Coroutine!!
-                StartCoroutine(Type());
+                //StartCoroutine(Type());
 
             }
         }
@@ -70,8 +71,8 @@ public class NPCApprouch : MonoBehaviour
             _dialogoCanvas.SetActive(false);
         }
     }
-
-    IEnumerator Type()
+    /*
+    public IEnumerator Type()
     {
         foreach (char letter in _sentences[_index].ToCharArray())
         {
@@ -83,17 +84,25 @@ public class NPCApprouch : MonoBehaviour
     public void NextSenteces()
     {
         
-        if(_index < _sentences.Length - 1)
-        {
-            _index++;
-            _display.text = "";
-            StartCoroutine(Type());
-        } else
-        {
-            _display.text = "";
+            Debug.Log("Apertou E");
+            if (_index < _sentences.Length - 1)
+            {
+                _index++;
+                _display.text = "";
+                StartCoroutine(Type());
+            }
+            else
+            {
+                _display.text = "";
+
+            }
+
+        
             
-        }
-    }
+            
+        
+       
+    }*/
 
 
 

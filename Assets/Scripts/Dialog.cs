@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Analytics;
+using UnityStandardAssets.Characters.ThirdPerson;
+using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
@@ -10,23 +12,48 @@ public class Dialog : MonoBehaviour
     public string[] _sentences;
     private int _index;
     public float _typingSpeed;
+    public KeyCode _interactionbutton;
+    public UnityEvent _interactionAction;
 
-    public GameObject _continueButton;
+    public GameObject _pressE;
 
-    void Start()
+    ThirdPersonCharacter _player;
+
+    private void Start()
     {
-        
-           StartCoroutine(Type());
-       
-       
+        _player = GameObject.Find("player").GetComponent<ThirdPersonCharacter>();
     }
 
-   
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "player")
+        {
+
+            StartTalk();
+        }
+    }
+
+
+
+    void StartTalk()
+    {
+        _pressE.SetActive(true);
+        StartCoroutine(Type());
+        
+    }
+
+
+
     void Update()
     {
         if(_display.text == _sentences[_index])
         {
-            _continueButton.SetActive(true);
+            _pressE.SetActive(true);
+            if (Input.GetKey(_interactionbutton))
+            {
+                _interactionAction.Invoke();
+            }
         }
     }
     IEnumerator Type()
@@ -37,11 +64,14 @@ public class Dialog : MonoBehaviour
             yield return new WaitForSeconds(_typingSpeed);
 
         }
+
+        
     }
+
 
     public void NextSentences()
     {
-       _continueButton.SetActive(false);
+        _pressE.SetActive(false);
 
         if(_index < _sentences.Length - 1)
         {
@@ -51,7 +81,8 @@ public class Dialog : MonoBehaviour
         } else
         {
             _display.text = "";
-           _continueButton.SetActive(false);
+            _pressE.SetActive(false);
+          
         }
     }
 }
