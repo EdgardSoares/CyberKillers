@@ -16,6 +16,7 @@ public class Dialog : MonoBehaviour
     public UnityEvent _interactionAction;
 
     public GameObject _pressE;
+    public GameObject _canvasDialogo;
 
     ThirdPersonCharacter _player;
 
@@ -29,8 +30,16 @@ public class Dialog : MonoBehaviour
     {
         if(other.gameObject.name == "player")
         {
-
+            _canvasDialogo.SetActive(true);
             StartTalk();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.name == "player")
+        {
+            _canvasDialogo.SetActive(false);
         }
     }
 
@@ -82,6 +91,7 @@ public class Dialog : MonoBehaviour
         {
             _display.text = "";
             _pressE.SetActive(false);
+            _canvasDialogo.SetActive(false);
           
         }
     }
